@@ -5,9 +5,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>首页</title>
+    <title>Home</title>
 </head>
 <body>
-aaaa
+Spring jetty websocket demo
+<div id="sse">
+    <a href="javascript:wsTest()">Run WebSocket</a>
+</div>
+<script>
+    function wsTest() {
+        var ws = new WebSocket("ws://localhost:8090/handler");
+        ws.onopen = function () {
+            console.log("ws is open")
+            ws.send("message from client")
+        };
+        ws.onmessage = function (evt) {
+            console.log(evt.data);
+        };
+        ws.onclose = function () {
+            console.log("ws is close");
+        };
+    }
+</script>
 </body>
 </html>

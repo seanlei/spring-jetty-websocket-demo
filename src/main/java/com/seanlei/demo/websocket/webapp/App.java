@@ -42,14 +42,12 @@ public class App {
         contextHandler.setEventListeners(new EventListener[]{new ContextLoaderListener(webCxt)});
         contextHandler.setResourceBase(basePath);
 
-        //设置jsp的支持
+        //support jsp
         Configuration.ClassList classlist = Configuration.ClassList
                 .setServerDefault(server);
-        classlist.addBefore(
-                "org.eclipse.jetty.webapp.JettyWebXmlConfiguration",
+        classlist.addBefore("org.eclipse.jetty.webapp.JettyWebXmlConfiguration",
                 "org.eclipse.jetty.annotations.AnnotationConfiguration");
-        contextHandler.setAttribute(
-                "org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",
+        contextHandler.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",
                 ".*/[^/]*servlet-api-[^/]*\\.jar$|.*/javax.servlet.jsp.jstl-.*\\.jar$|.*/[^/]*taglibs.*\\.jar$");
 
         server.setHandler(contextHandler);

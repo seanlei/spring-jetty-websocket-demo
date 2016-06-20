@@ -10,7 +10,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 public class CustomHandler extends TextWebSocketHandler {
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        // super.handleTextMessage(session, message);
-        System.out.println("bbbbbbbbbb");
+        String payload = message.getPayload();
+        session.sendMessage(new TextMessage("send message:" + payload + " success"));
     }
 }
