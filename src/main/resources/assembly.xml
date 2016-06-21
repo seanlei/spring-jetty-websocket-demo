@@ -4,7 +4,7 @@
     <!-- TODO: a jarjar format would be better -->
     <id>jar-with-dependencies</id>
     <formats>
-        <format>jar</format>
+        <format>dir</format>
     </formats>
     <includeBaseDirectory>false</includeBaseDirectory>
     <dependencySets>
@@ -15,4 +15,10 @@
             <scope>runtime</scope>
         </dependencySet>
     </dependencySets>
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.outputDirectory}</directory>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+    </fileSets>
 </assembly>
